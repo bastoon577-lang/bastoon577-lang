@@ -16,39 +16,30 @@
 #include <stdio.h>
 
 typedef struct {
-    const char* role;
-    const char* current_favourite[2];
+    const char *role;
+    const char *current_favourite[2];
 } AREA_OF_INTEREST_t;
 
-/**
- * \fn void print_favourites(AREA_OF_INTEREST_t* in)
- * \param in, data set pointer
- */
-void print_favourites(AREA_OF_INTEREST_t* in) {
-    const char* favourite_topic[] = {
-        "Hardware Design",
-        "Algorithms & Data Structure",
-        "Software Engineering/Development"
-    };
-    
-    int num_topics = sizeof(favourite_topic) / sizeof(favourite_topic[0]);
-
-    printf("Role: %s\n", in->role);
-    printf("Current favourite: %s, %s\n\n", in->current_favourite[0], in->current_favourite[1]);
-
-    for (uint8_t i = 0; i < num_topics; i++) {
-        printf("These are my all time %s\n", favourite_topic[i]);
-    }
-}
-
-int main() {
+int main(void) {
     AREA_OF_INTEREST_t obj = {
         .role = "Software Engineering",
-        .current_favourite = {"C Language", "Python"}
+        .current_favourite = {"C Language", "ASM" , "Python"}
     };
 
-    print_favourites(&obj);
+    // Print data
+    printf("Role: %s\n", obj.role);
+    printf("Current favourites: %s, %s\n\n", obj.current_favourite[0], obj.current_favourite[1]);
 
+    // Favorits topics
+    const char *topics[] = {
+        "Software Engineering / Development",   // My job since a long time
+        "Hardware Design",                      // Recent skill and for personals projects
+        "Algorithms & Data Structures"
+    };
+
+    for (uint8_t i = 0; i < 3; i++) {
+        printf("All-time favourite: %s\n", topics[i]);
+    }
     return 0;
 }
 ```
